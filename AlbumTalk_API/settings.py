@@ -35,7 +35,12 @@ SECRET_KEY = 'django-insecure-_s&lbpp5+nu3b*(3zwbzj7kl(bchejnm+#j!u%^4p6+1b+#j87
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['https://*.ws.codeinstitute-ide.net/']
+
+ALLOWED_HOSTS = [
+   os.environ.get('ALLOWED_HOSTS'),
+   '8000-andersganan-albumtalkap-g3b8htk3ydb.ws.codeinstitute-ide.net',
+]
 
 
 # Application definition
