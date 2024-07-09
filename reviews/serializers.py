@@ -29,7 +29,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     #     return None
 
     class Meta:
-        model = Post
+        model = Review
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
