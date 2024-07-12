@@ -18,15 +18,22 @@ class Album(models.Model):
     title = models.CharField(max_length=255)
     artist = models.CharField(max_length=255)
     image_url = models.URLField()
-    release_date = models.DateField()
-    genre = models.ForeignKey(Genre, on_delete=models.PROTECT, null=True, blank=True)
+    release_year = models.SmallIntegerField()
+    description = models.TextField()
+    genre = models.CharField(max_length=255)
+    style = models.CharField(max_length=255)
+    label = models.CharField(max_length=255)
+    album_format = models.CharField(max_length=255)
+    audiodb_idAlbum = models.SmallIntegerField()
+    audiodb_idArtist = models.SmallIntegerField()
+    discogs_id = models.CharField(max_length=255, blank=True)
+    wikipedia_id = models.CharField(max_length=255, blank=True)
+
+
+
     created_at = models.DateTimeField(auto_now_add=True)   
 
     class Meta:
-        ordering = ['title']
+        ordering = ['release_year']
     def __str__(self):
         return self.title
-
-
-
-
