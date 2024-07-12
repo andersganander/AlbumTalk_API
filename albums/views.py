@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,6 +9,34 @@ from rest_framework.views import APIView
 from .models import Album, Genre
 from .serializers import AlbumSerializer
 from AlbumTalk_API.permissions import IsOwnerOrReadOnly
+
+
+def import_data(request):
+    if request.method == 'POST' and 'json_file' in request.FILES:
+        json_file = request.FILES['json_file']
+        data = json.load(json_file)
+        albums = data.get('album', [])
+        #print(data)
+        for album in albums:
+            #print(album)
+            new_album = Album(
+                title=album.get('strAlbum'),
+                artist=album.get('strArtist'),
+                image_url=album.get('strAlbumThumb'),
+                release_year=album.get('intYearReleased'),
+                description=album.get('strDescriptionEN'),
+                genre=album.get('strGenre'),
+                style=album.get('strStyle'),
+                label=album.get('strLabel'),
+                album_format=album.get('strReleaseFormat'),
+                audiodb_idAlbum=album.get('idAlbum'),
+                audiodb_idArtist=album.get('idArtist'),
+                discogs_id=album.get('strDiscogsID'),
+                wikipedia_id=album.get('strWikipediaID'),
+            )
+            new_album.save()
+        return render(request, 'success.html')
+    return render(request, 'form.html')
 
 class AlbumList(APIView):
 

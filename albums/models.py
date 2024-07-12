@@ -17,17 +17,17 @@ class Album(models.Model):
     """
     title = models.CharField(max_length=255)
     artist = models.CharField(max_length=255)
-    image_url = models.URLField()
+    image_url = models.URLField(blank=True, null=True)
     release_year = models.SmallIntegerField()
-    description = models.TextField()
-    genre = models.CharField(max_length=255)
-    style = models.CharField(max_length=255)
-    label = models.CharField(max_length=255)
-    album_format = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    genre = models.CharField(max_length=255, blank=True, null=True)
+    style = models.CharField(max_length=255, blank=True, null=True)
+    label = models.CharField(max_length=255, blank=True, null=True)
+    album_format = models.CharField(max_length=255, blank=True, null=True)
     audiodb_idAlbum = models.SmallIntegerField()
     audiodb_idArtist = models.SmallIntegerField()
-    discogs_id = models.CharField(max_length=255, blank=True)
-    wikipedia_id = models.CharField(max_length=255, blank=True)
+    discogs_id = models.CharField(max_length=255, blank=True, null=True)
+    wikipedia_id = models.CharField(max_length=255, blank=True, null=True)
 
 
 
