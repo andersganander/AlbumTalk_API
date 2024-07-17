@@ -28,9 +28,6 @@ class Album(models.Model):
     audiodb_idArtist = models.SmallIntegerField()
     discogs_id = models.CharField(max_length=255, blank=True, null=True)
     wikipedia_id = models.CharField(max_length=255, blank=True, null=True)
-
-
-
     created_at = models.DateTimeField(auto_now_add=True)   
 
     class Meta:

@@ -33,5 +33,5 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
-            'content', 'comments_count', 'rating',
+            'album', 'content', 'comments_count', 'rating',
         ]
