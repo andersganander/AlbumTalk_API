@@ -8,15 +8,16 @@ class Favorite(models.Model):
     Favorite model, related to user and album.
     """
    
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    #owner = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     album = models.ForeignKey(Album, on_delete=models.CASCADE) 
    
 
     class Meta:
         #ordering = ['owner.username']
-        unique_together = ['owner', 'album']
+        #unique_together = ['owner', 'album']
 
-    def __str__(self):
-        return f'{self.owner.username} - {self.album.title}'
+        def __str__(self):
+            return f'{self.owner.username} - {self.album.title}'
 
     #TODO Add signal so that a favorite is created when profile is edited
