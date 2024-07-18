@@ -40,6 +40,8 @@ def import_data(request):
 
 class AlbumList(APIView):
 
+    #TODO Add fields for counting favorites, reviews, rating etc
+
     serializer_class = AlbumSerializer
     # permission_classes = [
     #     permissions.IsAuthenticatedOrReadOnly
