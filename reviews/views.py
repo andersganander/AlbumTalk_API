@@ -54,7 +54,7 @@ class ReviewDetail(APIView):
             self.check_object_permissions(self.request, review)
             return review
         # TODO Check this exception !!!
-        except Post.DoesNotExist:
+        except Review.DoesNotExist:
             raise Http404
 
     def get(self, request, pk):

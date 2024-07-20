@@ -27,7 +27,7 @@ Described in the readme for the web application
 ## Agile:
 The API and Frontend of this project was planned using Agile methodology and MoSCoW prioritization on github projects.<br>
 
-The user stories project can be found [here](https://github.com/users/Hujanen91/projects/9) 
+The user stories project can be found [here](https://github.com/users/andersganander/projects/6)
 
 ## Labels used:
 `must-have`
