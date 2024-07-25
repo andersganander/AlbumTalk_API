@@ -100,7 +100,8 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
-REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'}
+REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer',
+                         'TOKEN_SERIALIZER': 'AlbumTalk_API.serializers.TokenSerializer',}
 
 
 

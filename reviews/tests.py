@@ -102,7 +102,7 @@ class ReviewDetailViewTests(APITestCase):
         self.client.login(username='user1', password='pass')
         album = Album.objects.get(title='heroes')
         response = self.client.post('/reviews/', {'album':album.pk, 'rating':5, 'content':'reviewing same album'})
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         print(response.data)
 
 
