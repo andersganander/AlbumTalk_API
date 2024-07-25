@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
-
+    'django_filters'
     'rest_framework.authtoken', 
     'dj_rest_auth', 
 
@@ -101,7 +101,7 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
-REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}
+REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'}
 
 
 
