@@ -78,16 +78,16 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # KOLLA UPP OCH JMF MED DRF CHEAT SHEET - DEPLOYMENT 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [( 
-#         'rest_framework.authentication.SessionAuthentication' 
-#         if 'DEV' in os.environ 
-#         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-#     )],
-#     'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
-#     'PAGE_SIZE': 10,
-#     'DATETIME_FORMAT': '%d %b %Y',
-#     }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [( 
+        'rest_framework.authentication.SessionAuthentication' 
+        if 'DEV' in os.environ 
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
+    'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DATETIME_FORMAT': '%d %b %Y',
+    }
 
 # if 'DEV' not in os.environ:
 #     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
@@ -102,11 +102,10 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
-# Default API renderer and session auth will be used in dev environment.
 if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] = [
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    ]
+    # REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] = [
+    #     'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    # ]
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer'
     ]
@@ -122,11 +121,9 @@ if 'DEV' not in os.environ:
 #     }
 
 REST_AUTH = {
-    # HTTPYONLY has to be false for refresh_token to be sent to the client
-    # as per the dj-rest-auth documentation.
-    # 'JWT_AUTH_HTTPONLY': False,
-
+  
     'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
     'JWT_AUTH_REFRESH_COOKIE': 'albumtalk-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
