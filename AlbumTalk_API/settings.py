@@ -110,28 +110,28 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer'
     ]
 
-# REST_USE_JWT = True
-# JWT_AUTH_COOKIE = 'my-app-auth'
-# JWT_AUTH_SECURE = True
-# JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-# JWT_AUTH_SAMESITE = 'None'
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'albumtalk-auth-token'
+JWT_AUTH_SECURE = True
+JWT_AUTH_REFRESH_COOKIE = 'albumtalk-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
 
-# REST_AUTH_SERIALIZERS = {
-#     'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'
-#     }
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'
+    }
 
-REST_AUTH = {
+# REST_AUTH = {
   
-    'USE_JWT': True,
-    'JWT_AUTH_HTTPONLY': False,
-    'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
-    'JWT_AUTH_REFRESH_COOKIE': 'albumtalk-refresh-token',
-    'JWT_AUTH_SAMESITE': 'None',
-    'JWT_AUTH_SECURE': True,
-    'USER_DETAILS_SERIALIZER': (
-        'AlbumTalk_API.serializers.CurrentUserSerializer'
-    ),
-}
+#     'USE_JWT': True,
+#     'JWT_AUTH_HTTPONLY': False,
+#     'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
+#     'JWT_AUTH_REFRESH_COOKIE': 'albumtalk-refresh-token',
+#     'JWT_AUTH_SAMESITE': 'None',
+#     'JWT_AUTH_SECURE': True,
+#     'USER_DETAILS_SERIALIZER': (
+#         'AlbumTalk_API.serializers.CurrentUserSerializer'
+#     ),
+# }
 
 # 'TOKEN_SERIALIZER': 'AlbumTalk_API.serializers.TokenSerializer',
 
