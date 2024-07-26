@@ -110,7 +110,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer'
     ]
 
-REST_USE_JWT = True
+USE_JWT = True
 JWT_AUTH_COOKIE = 'albumtalk-auth-token'
 JWT_AUTH_SECURE = True
 JWT_AUTH_REFRESH_COOKIE = 'albumtalk-refresh-token'
