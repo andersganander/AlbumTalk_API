@@ -124,8 +124,9 @@ if 'DEV' not in os.environ:
 REST_AUTH = {
     # HTTPYONLY has to be false for refresh_token to be sent to the client
     # as per the dj-rest-auth documentation.
+    # 'JWT_AUTH_HTTPONLY': False,
+
     'USE_JWT': True,
-    'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
     'JWT_AUTH_REFRESH_COOKIE': 'albumtalk-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
