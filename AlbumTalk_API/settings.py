@@ -126,8 +126,8 @@ REST_AUTH = {
     # as per the dj-rest-auth documentation.
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
-    'JWT_AUTH_COOKIE': 'sharesphere-auth-token',
-    'JWT_AUTH_REFRESH_COOKIE': 'sharesphere-refresh-token',
+    'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
+    'JWT_AUTH_REFRESH_COOKIE': 'albumtalk-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
     'JWT_AUTH_SECURE': True,
     'USER_DETAILS_SERIALIZER': (
