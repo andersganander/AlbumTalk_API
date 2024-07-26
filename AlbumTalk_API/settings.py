@@ -78,31 +78,62 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # KOLLA UPP OCH JMF MED DRF CHEAT SHEET - DEPLOYMENT 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [( 
-        'rest_framework.authentication.SessionAuthentication' 
-        if 'DEV' in os.environ 
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
-    'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
-    'DATETIME_FORMAT': '%d %b %Y',
-    }
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [( 
+#         'rest_framework.authentication.SessionAuthentication' 
+#         if 'DEV' in os.environ 
+#         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+#     )],
+#     'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 10,
+#     'DATETIME_FORMAT': '%d %b %Y',
+#     }
 
+# if 'DEV' not in os.environ:
+#     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+#         'rest_framework.renderers.JSONRenderer'
+#     ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': (
+        'rest_framework.pagination.LimitOffsetPagination'
+    ),
+    'PAGE_SIZE': 15,
+    'DATETIME_FORMAT': '%d %b %Y',
+}
+
+# Default API renderer and session auth will be used in dev environment.
 if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] = [
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    ]
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer'
     ]
 
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_SECURE = True
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
+# REST_USE_JWT = True
+# JWT_AUTH_COOKIE = 'my-app-auth'
+# JWT_AUTH_SECURE = True
+# JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+# JWT_AUTH_SAMESITE = 'None'
 
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'
-    }
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'
+#     }
+
+REST_AUTH = {
+    # HTTPYONLY has to be false for refresh_token to be sent to the client
+    # as per the dj-rest-auth documentation.
+    'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
+    'JWT_AUTH_COOKIE': 'sharesphere-auth-token',
+    'JWT_AUTH_REFRESH_COOKIE': 'sharesphere-refresh-token',
+    'JWT_AUTH_SAMESITE': 'None',
+    'JWT_AUTH_SECURE': True,
+    'USER_DETAILS_SERIALIZER': (
+        'AlbumTalk_API.serializers.CurrentUserSerializer'
+    ),
+}
 
 # 'TOKEN_SERIALIZER': 'AlbumTalk_API.serializers.TokenSerializer',
 
