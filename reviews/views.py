@@ -1,12 +1,12 @@
 from django.http import Http404
-from rest_framework import status, permissions
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Review
 from .serializers import ReviewSerializer
 from AlbumTalk_API.permissions import IsOwnerOrReadOnly
 
-class ReviewList(APIView):
+class ReviewList(generics.ListCreateAPIView):
 
     serializer_class = ReviewSerializer
     permission_classes = [

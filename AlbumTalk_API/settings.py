@@ -110,7 +110,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer'
     ]
 
-# USE_JWT = True
+# REST_USE_JWT = True
 # JWT_AUTH_COOKIE = 'albumtalk-auth-token'
 # JWT_AUTH_SECURE = True
 # JWT_AUTH_REFRESH_COOKIE = 'albumtalk-refresh-token'
@@ -120,8 +120,7 @@ if 'DEV' not in os.environ:
 #     'USER_DETAILS_SERIALIZER': 'AlbumTalk_API.serializers.CurrentUserSerializer'
 #     }
 
-REST_AUTH = {
-  
+REST_AUTH = {  
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
