@@ -5,13 +5,17 @@ from rest_framework.views import APIView
 from .models import Review
 from .serializers import ReviewSerializer
 from AlbumTalk_API.permissions import IsOwnerOrReadOnly
+from django_filters.rest_framework import DjangoFilterBackend
 
 class ReviewList(generics.ListCreateAPIView):
 
     serializer_class = ReviewSerializer
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # Not totally sure aabout this one...
+    queryset = Review.objects.all()
+    # Filters
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['album']
 
 
     def get(self, request):
