@@ -101,6 +101,7 @@ REST_FRAMEWORK = {
     ),
     'PAGE_SIZE': 15,
     'DATETIME_FORMAT': '%d %b %Y',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 if 'DEV' not in os.environ:
