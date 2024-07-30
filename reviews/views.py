@@ -1,11 +1,12 @@
 from django.http import Http404
-from rest_framework import generics, status, permissions
+from rest_framework import generics, status, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Review
 from .serializers import ReviewSerializer
 from AlbumTalk_API.permissions import IsOwnerOrReadOnly
-from django_filters.rest_framework import DjangoFilterBackend
+
 
 class ReviewList(generics.ListCreateAPIView):
 
@@ -18,12 +19,16 @@ class ReviewList(generics.ListCreateAPIView):
     filterset_fields = ['album']
 
 
-    def get(self, request):
-        reviews = Review.objects.all()
-        serializer = ReviewSerializer(
-            reviews, many = True, context = {'request': request}
-        )
-        return Response(serializer.data)
+    # def get(self, request):
+    #     reviews = Review.objects.all()
+    #     serializer = ReviewSerializer(
+    #         reviews, many = True, context = {'request': request}
+    #     )
+    #     print('GET')
+    #     return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
     def post(self, request):
             serializer = ReviewSerializer(
