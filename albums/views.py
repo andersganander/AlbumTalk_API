@@ -39,7 +39,7 @@ def import_data(request):
         return render(request, 'success.html')
     return render(request, 'form.html')
 
-class AlbumList(APIView):
+class AlbumList(generics.ListCreateAPIView):
 
     #TODO Add fields for counting favorites, reviews, rating etc
 
@@ -50,29 +50,29 @@ class AlbumList(APIView):
     queryset = Album.objects.annotate(
         # Removed distinct=True
         reviews_count=Count('reviews')
-    ).order_by('-created_at')
+    ).order_by('release_year')
 
 
-    def get(self, request):
-        albums = Album.objects.all()
-        serializer = AlbumSerializer(
-            albums, many = True, context = {'request': request}
-        )
-        return Response(serializer.data)
+    # def get(self, request):
+    #     albums = Album.objects.all()
+    #     serializer = AlbumSerializer(
+    #         albums, many = True, context = {'request': request}
+    #     )
+    #     return Response(serializer.data)
 
-    def post(self, request):
-            serializer = AlbumSerializer(
-                data=request.data, context ={'request': request}
-            )
-            if serializer.is_valid():
-                serializer.save()
-                return Response(
-                    serializer.data, status=status.HTTP_201_CREATED
-                )
+    # def post(self, request):
+    #         serializer = AlbumSerializer(
+    #             data=request.data, context ={'request': request}
+    #         )
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #             return Response(
+    #                 serializer.data, status=status.HTTP_201_CREATED
+    #             )
 
-            return Response(
-                serializer.errors, status=status.HTTP_400_BAD_REQUEST
-            )
+    #         return Response(
+    #             serializer.errors, status=status.HTTP_400_BAD_REQUEST
+    #         )
 
 class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -84,7 +84,7 @@ class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Album.objects.annotate(
         # Removed distinct=True
         reviews_count=Count('reviews')
-    ).order_by('-created_at')
+    ).order_by('release_year')
 
 
     # queryset = Review.objects.annotate(
