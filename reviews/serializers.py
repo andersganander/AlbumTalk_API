@@ -13,6 +13,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     #likes_count = serializers.ReadOnlyField()
     # TODO Add Album related fields when the album model has been added
     comments_count = serializers.ReadOnlyField()
+    album_title = serializers.ReadOnlyField(source='album.title')
+
 
 
     def get_is_owner(self, obj):
@@ -34,4 +36,5 @@ class ReviewSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'album', 'content', 'comments_count', 'rating',
+            'album_title',
         ]
