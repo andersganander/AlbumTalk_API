@@ -16,8 +16,7 @@ class ReviewList(generics.ListCreateAPIView):
     queryset = Review.objects.all()
     # Filters
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['album']
-
+    filterset_fields = ['album', 'owner__profile']
 
     # def get(self, request):
     #     reviews = Review.objects.all()
