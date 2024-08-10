@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.http import Http404
 from rest_framework import generics, status, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
@@ -13,7 +14,12 @@ class ReviewList(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     # Not totally sure aabout this one...
-    queryset = Review.objects.all()
+    #queryset = Review.objects.all()
+
+    queryset = Review.objects.annotate(
+        comments_count=Count('comments', distinct=True),
+    ).order_by('-created_at')
+
     # Filters
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['album', 'owner__profile']
@@ -49,7 +55,11 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = ReviewSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Review.objects.all()
+    #queryset = Review.objects.all()
+
+    queryset = Review.objects.annotate(
+        comments_count=Count('comments', distinct=True),
+    ).order_by('-created_at')
 
     # queryset = Review.objects.annotate(
     #     likes_count=Count('likes', distinct=True),
