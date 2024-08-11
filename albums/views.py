@@ -4,7 +4,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import Http404
-from rest_framework import generics, status, permissions
+from rest_framework import generics, status, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Album, Genre
@@ -51,6 +52,16 @@ class AlbumList(generics.ListCreateAPIView):
         # Removed distinct=True
         reviews_count=Count('reviews')
     ).order_by('release_year')
+
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+
+    ordering_fields = [
+        'reviews_count',
+    ]
 
 
     # def get(self, request):
