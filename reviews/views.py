@@ -21,8 +21,16 @@ class ReviewList(generics.ListCreateAPIView):
     ).order_by('-created_at')
 
     # Filters
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [
+        filters.SearchFilter,
+        DjangoFilterBackend
+    ]
+
     filterset_fields = ['album', 'owner__profile']
+
+    search_fields = [
+        'album__title', 'owner__username'
+    ]
 
     # def get(self, request):
     #     reviews = Review.objects.all()

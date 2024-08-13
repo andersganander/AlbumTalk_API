@@ -59,6 +59,10 @@ class AlbumList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
 
+    search_fields = [
+        'title',
+    ]
+
     ordering_fields = [
         'reviews_count',
     ]
