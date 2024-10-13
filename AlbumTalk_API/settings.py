@@ -42,7 +42,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.ws.codeinstitute-ide.net/']
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOSTS'),
-   '8000-andersganan-albumtalkap-g3b8htk3ydb.ws.codeinstitute-ide.net',
+   '8000-andersganan-albumtalkap-ozkx3j4c6sb.ws.codeinstitute-ide.net',
 ]
 
 
@@ -102,6 +102,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 15,
     'DATETIME_FORMAT': '%d %b %Y',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
 }
 
 if 'DEV' not in os.environ:

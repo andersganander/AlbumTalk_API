@@ -12,6 +12,7 @@ class AlbumSerializer(serializers.ModelSerializer):
     # release_date = serializers.ReadOnlyField()
     # genre = serializers.ReadOnlyField()
     reviews_count = serializers.ReadOnlyField()
+    favorite_count = serializers.ReadOnlyField()
 
     class Meta:
         model = Album
@@ -19,5 +20,5 @@ class AlbumSerializer(serializers.ModelSerializer):
             'id', 'title', 'artist', 'image_url', 'release_year',
             'description', 'genre', 'style', 'label', 'album_format',
             'audiodb_idAlbum', 'audiodb_idArtist', 'discogs_id',
-            'wikipedia_id', 'reviews_count',
+            'wikipedia_id', 'reviews_count', 'favorite_count',
         ]

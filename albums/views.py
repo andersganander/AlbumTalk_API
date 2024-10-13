@@ -50,7 +50,8 @@ class AlbumList(generics.ListCreateAPIView):
     ]
     queryset = Album.objects.annotate(
         # Removed distinct=True
-        reviews_count=Count('reviews')
+        reviews_count=Count('reviews'),
+        favorite_count=Count('starred'),
     ).order_by('release_year')
 
     filter_backends = [
@@ -98,7 +99,8 @@ class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Album.objects.annotate(
         # Removed distinct=True
-        reviews_count=Count('reviews')
+        reviews_count=Count('reviews'),
+        favorite_count=Count('starred')
     ).order_by('release_year')
 
 

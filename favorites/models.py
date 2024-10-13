@@ -9,13 +9,16 @@ class Favorite(models.Model):
     """
    
     #owner = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE) 
+    owner = models.ForeignKey(
+        User , on_delete=models.CASCADE)
+    album = models.ForeignKey(
+        Album, related_name="starred", on_delete=models.CASCADE
+    ) 
    
 
     class Meta:
         #ordering = ['owner.username']
-        #unique_together = ['owner', 'album']
+        unique_together = ['owner', 'album']
 
         def __str__(self):
             return f'{self.owner.username} - {self.album.title}'

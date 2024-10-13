@@ -17,6 +17,7 @@ class FavoriteList(generics.ListCreateAPIView):
 
 class FavoriteDetail(generics.RetrieveDestroyAPIView):
     
-    #permission_classes = [IsOwnerOrReadOnly]
-    queryset = Favorite.objects.all()
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = FavoriteSerializer
+    queryset = Favorite.objects.all()
+    
