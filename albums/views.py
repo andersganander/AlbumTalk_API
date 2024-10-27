@@ -60,6 +60,10 @@ class AlbumList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
 
+    filterset_fields = [
+        'starred__owner__profile',
+    ]
+
     search_fields = [
         'title',
     ]
