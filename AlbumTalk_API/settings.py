@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': (
         'rest_framework.pagination.LimitOffsetPagination'
     ),
-    'PAGE_SIZE': 15,
+    'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
