@@ -11,7 +11,8 @@ class Review(models.Model):
    
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
      # TODO: This should be a many-to-one relationship with Album model
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews', blank=True, null=True) 
+    # album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews', blank=True, null=True) 
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews') 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.SmallIntegerField()
@@ -20,6 +21,7 @@ class Review(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ('owner', 'album')
 
     def __str__(self):
         return f'{self.owner.username} - {self.id}'
