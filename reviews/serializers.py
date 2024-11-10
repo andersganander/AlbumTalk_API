@@ -38,3 +38,11 @@ class ReviewSerializer(serializers.ModelSerializer):
             'album', 'content', 'comments_count', 'rating',
             'album_title',
         ]
+
+
+class ReviewDetailSerializer(ReviewSerializer):
+    """
+    Serializer for the Review model used in Detail view
+    Post is a read only field so that we dont have to set it on each update
+    """
+    album = serializers.ReadOnlyField(source='album.id')
