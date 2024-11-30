@@ -9,12 +9,12 @@ class Review(models.Model):
     """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews', blank=True, null=True) 
+    album = models.ForeignKey(Album, on_delete=models.CASCADE,
+                              related_name='reviews', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.SmallIntegerField()
     content = models.TextField(blank=True)
-    
 
     class Meta:
         ordering = ['-created_at']

@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     """
-    Profile model, representing a user's profile. It is related to the User model.
+    Profile model, representing a user's profile. It is related to the User
+    model.
 
     """
-    
+
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -46,7 +47,8 @@ def create_profile(sender, instance, created, **kwargs):
     is created with the same owner.
 
     Parameters:
-    sender (class): The model class sending the signal. In this case, it is User.
+    sender (class): The model class sending the signal. In this case, it is
+    User.
     instance (User): The instance of the User model that triggered the signal.
     created (bool): A boolean indicating whether the User object was created.
     kwargs (dict): Additional keyword arguments passed to the signal handler.
@@ -56,5 +58,6 @@ def create_profile(sender, instance, created, **kwargs):
     """
     if created:
         Profile.objects.create(owner=instance)
+
 
 post_save.connect(create_profile, sender=User)

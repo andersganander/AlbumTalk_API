@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from reviews.models import Review
-#from likes.models import Like
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -18,11 +17,10 @@ class ReviewSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     album_title = serializers.ReadOnlyField(source='album.title')
 
-
-
     def get_is_owner(self, obj):
         """
-        Returns True if the authenticated user is the owner of the review, False otherwise.
+        Returns True if the authenticated user is the owner of the review,
+        False otherwise.
         """
         request = self.context['request']
         return request.user == obj.owner

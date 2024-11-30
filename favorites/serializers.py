@@ -1,8 +1,7 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from django.contrib.auth.models import User
 from favorites.models import Favorite
-from .models import Album
+
 
 class FavoriteSerializer(serializers.ModelSerializer):
     """
@@ -18,7 +17,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-       
         try:
             return super().create(validated_data)
         except IntegrityError:

@@ -17,16 +17,19 @@ class FollowerList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         """
-        This method is used to create a new follower instance when a POST request is made.
-        It associates the current logged in user with the new follower instance.
+        This method is used to create a new follower instance when a POST
+        request is made.
+        It associates the current logged in user with the new follower
+        instance.
 
         Parameters:
-        - serializer (rest_framework.serializers.ModelSerializer): The 
-        serializer instance used to validate and create the new follower 
+        - serializer (rest_framework.serializers.ModelSerializer): The
+        serializer instance used to validate and create the new follower
         instance.
 
         Returns:
-        - None: This method does not return any value. It directly saves the new follower instance using the serializer.
+        - None: This method does not return any value. It directly saves the
+        new follower instance using the serializer.
         """
         serializer.save(owner=self.request.user)
 

@@ -22,13 +22,15 @@ class FollowerSerializer(serializers.ModelSerializer):
         Creates a new Follower instance in the database.
 
         Parameters:
-        validated_data (dict): A dictionary containing the validated data for creating a new Follower instance.
+        validated_data (dict): A dictionary containing the validated data for
+        creating a new Follower instance.
 
         Returns:
         Follower: The newly created Follower instance.
 
         Raises:
-        serializers.ValidationError: If a duplicate entry is found while creating a new Follower instance.
+        serializers.ValidationError: If a duplicate entry is found while
+        creating a new Follower instance.
         """
         try:
             return super().create(validated_data)

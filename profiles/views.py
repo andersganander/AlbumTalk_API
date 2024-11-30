@@ -5,9 +5,11 @@ from .models import Profile
 from .serializers import ProfileSerializer
 from AlbumTalk_API.permissions import IsOwnerOrReadOnly
 
+
 class ProfileList(generics.ListAPIView):
     """
-    List all profiles, including their reviews count, followers count, and following count.
+    List all profiles, including their reviews count, followers count, and
+    following count.
     Order the profiles by creation date in descending order.
     """
     queryset = Profile.objects.annotate(
@@ -32,6 +34,7 @@ class ProfileList(generics.ListAPIView):
         'owner__followed__created_at',
     ]
 
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve or update a profile if you're the owner.
@@ -43,5 +46,3 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
-
-   
