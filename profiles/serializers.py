@@ -12,10 +12,17 @@ class ProfileSerializer(serializers.ModelSerializer):
     favorites_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
+        """
+        Returns True if the authenticated user is the owner of the profile, False otherwise.
+        """
         request = self.context['request']
         return request.user == obj.owner
 
     def get_following_id(self, obj):
+        """
+        Returns the ID of the Follower object if the authenticated user is following the profile owner,
+        or None otherwise.
+        """
         user = self.context['request'].user
         if user.is_authenticated:
             following = Follower.objects.filter(

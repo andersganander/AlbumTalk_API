@@ -5,18 +5,21 @@ from favorites.models import Favorite
 
 class AlbumSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Album model
+    Serializer for the Album model.
+
+    This serializer includes additional fields for review count, favorite count,
+    and favorite ID for the authenticated user.
     """
-    # title = serializers.ReadOnlyField()
-    # artist = serializers.ReadOnlyField()
-    # image_url = serializers.ReadOnlyField()
-    # release_date = serializers.ReadOnlyField()
-    # genre = serializers.ReadOnlyField()
+
     reviews_count = serializers.ReadOnlyField()
     favorite_count = serializers.ReadOnlyField()
     favorite_id = serializers.SerializerMethodField()
 
     def get_favorite_id(self, obj):
+        """
+        Returns the favorite ID for the authenticated user if they have a favorite
+        for this album, or None otherwise.
+        """
         user = self.context['request'].user
         if user.is_authenticated:
             favorite = Favorite.objects.filter(

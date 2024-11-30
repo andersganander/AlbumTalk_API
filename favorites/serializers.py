@@ -10,8 +10,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
     Create method handles the unique constraint on 'album' and 'user'
     """
     owner = serializers.ReadOnlyField(source='owner.username')
-    #user = serializers.ModelField(User, source='owner.username')
-    #album = serializers.ModelField(Album, source='album.title')
 
     class Meta:
         model = Favorite

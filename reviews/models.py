@@ -5,14 +5,11 @@ from albums.models import Album
 
 class Review(models.Model):
     """
-    Review model, related to 'owner', i.e. a User instance.
-    Relation to Album will be added later
+    Review model, related to User and Album
     """
-   
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-     # TODO: This should be a many-to-one relationship with Album model
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews', blank=True, null=True) 
-    #album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='reviews') 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.SmallIntegerField()

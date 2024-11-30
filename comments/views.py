@@ -6,16 +6,26 @@ from .serializers import CommentSerializer, CommentDetailSerializer
 
 class CommentList(generics.ListCreateAPIView):
     """
-    List all comments
-    Create a new comment if authenticated
-    Associate the current logged in user with the comment
+    This class provides a view for listing all comments and creating new ones.
+    Only authenticated users can create new comments. The current logged-in 
+    user is associated with the new comment.
+
+    Attributes:
+    permission_classes: List of permissions classes that determine who can 
+    access this view.
+    serializer_class: Serializer class used to serialize and deserialize 
+    the comment data.
+    queryset: Queryset of comments to be displayed.
+
+    Methods:
+    perform_create(self, serializer): Method that is called when a new comment is created.
+        It saves the current logged-in user as the owner of the comment.
     """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 
-     # Filters
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['review',]
     
@@ -25,9 +35,16 @@ class CommentList(generics.ListCreateAPIView):
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a comment
-    update or delete a comment if owner
+    This class provides a view for retrieving, updating, or deleting a specific comment.
+    Only the owner of the comment can update or delete it.
+
+    Attributes:
+    permission_classes: List of permissions classes that determine who can access this view.
+    serializer_class: Serializer class used to serialize and deserialize the comment data.
+    queryset: Queryset of comments to be displayed.
+
     """
+
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()

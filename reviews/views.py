@@ -10,52 +10,32 @@ from AlbumTalk_API.permissions import IsOwnerOrReadOnly
 
 
 class ReviewList(generics.ListCreateAPIView):
+    """
+    This class provides a view for listing all reviews and creating new ones.
+    Only authenticated users can create new reviews. The current logged-in 
+    user is associated with the new review.
+    """
 
     serializer_class = ReviewSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    # Not totally sure aabout this one...
-    #queryset = Review.objects.all()
-
+   
     queryset = Review.objects.annotate(
         comments_count=Count('comments', distinct=True),
     ).order_by('-created_at')
 
-    # Filters
     filter_backends = [
         filters.SearchFilter,
         DjangoFilterBackend
     ]
 
     filterset_fields = ['album', 'owner__profile']
-
     search_fields = [
         'album__title', 'owner__username'
     ]
 
-    # def get(self, request):
-    #     reviews = Review.objects.all()
-    #     serializer = ReviewSerializer(
-    #         reviews, many = True, context = {'request': request}
-    #     )
-    #     print('GET')
-    #     return Response(serializer.data)
-
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    # def post(self, request):
-    #         serializer = ReviewSerializer(
-    #             data=request.data, context ={'request': request}
-    #         )
-    #         if serializer.is_valid():
-    #             serializer.save(owner=request.user)
-    #             return Response(
-    #                 serializer.data, status=status.HTTP_201_CREATED
-    #             )
-
-    #         return Response(
-    #             serializer.errors, status=status.HTTP_400_BAD_REQUEST
-    #         )
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -63,50 +43,9 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = ReviewSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    #queryset = Review.objects.all()
 
     queryset = Review.objects.annotate(
         comments_count=Count('comments', distinct=True),
     ).order_by('-created_at')
 
-    # queryset = Review.objects.annotate(
-    #     likes_count=Count('likes', distinct=True),
-    #     comments_count=Count('comment', distinct=True)
-    # ).order_by('-created_at')
-    #queryset = Review.objects().order_by('-created_at')
-
-    # def get_object(self, pk):
-    #     try:
-    #         review = Review.objects.get(pk=pk)
-    #         self.check_object_permissions(self.request, review)
-    #         return review
-    #     # TODO Check this exception !!!
-    #     except Review.DoesNotExist:
-    #         raise Http404
-
-    # def get(self, request, pk):
-    #     review = self.get_object(pk)
-    #     serializer = ReviewSerializer(
-    #         review, context={'request': request}
-    #     )
-    #     return Response(serializer.data)
-
-    # def put(self, request, pk):
-    #     review = self.get_object(pk)
-    #     serializer = ReviewSerializer(
-    #         review, data=request.data, context={'request': request}
-    #     )
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(
-    #         serializer.errors, status=status.HTTP_400_BAD_REQUEST
-    #     )
-
-    # def delete(self, request, pk):
-    #     review = self.get_object(pk)
-    #     review.delete()
-    #     return Response(
-    #         status=status.HTTP_204_NO_CONTENT
-    #     )
 

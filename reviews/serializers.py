@@ -4,31 +4,28 @@ from reviews.models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Review model.
+
+    This serializer includes additional fields for owner's profile ID,
+    profile image, comments count, and album title.
+    """
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    # TODO TBD if like fields shoud be removed or not
-    #like_id = serializers.SerializerMethodField()
-    #likes_count = serializers.ReadOnlyField()
-    # TODO Add Album related fields when the album model has been added
     comments_count = serializers.ReadOnlyField()
     album_title = serializers.ReadOnlyField(source='album.title')
 
 
 
     def get_is_owner(self, obj):
+        """
+        Returns True if the authenticated user is the owner of the review, False otherwise.
+        """
         request = self.context['request']
         return request.user == obj.owner
-
-    # def get_like_id(self, obj):
-    #     user = self.context['request'].user
-    #     if user.is_authenticated:
-    #         like = Like.objects.filter(
-    #             owner=user, post=obj
-    #         ).first()
-    #         return like.id if like else None
-    #     return None
 
     class Meta:
         model = Review
@@ -43,6 +40,5 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ReviewDetailSerializer(ReviewSerializer):
     """
     Serializer for the Review model used in Detail view
-    Post is a read only field so that we dont have to set it on each update
     """
     album = serializers.ReadOnlyField(source='album.id')
