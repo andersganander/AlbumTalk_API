@@ -106,7 +106,6 @@ class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
     album data.
     queryset: The queryset of albums to be displayed. It includes annotations 
     for reviews and favorites counts.
-
     """
 
     serializer_class = AlbumSerializer
