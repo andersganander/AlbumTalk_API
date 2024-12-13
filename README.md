@@ -1,48 +1,46 @@
 # AlbumTalk API
 
-![AlbumTalk](docs/images/)<br>
 AlbumTalk is a dynamic web application designed for music enthusiasts to write, share, and discuss reviews of music albums. It serves as a community platform where users can discover new music, express their opinions on albums, and engage in meaningful discussions with fellow music lovers. The application aims to foster a vibrant community centered around music appreciation and critique.
-
-## Table of Contents
-
-## Objective
 
 The AlbumTalk API is a RESTful web service that powers the AlbumTalk web application. It provides endpoints for user management, album review operations, search functionality, and user interactions. The API ensures that the application remains secure, scalable, and efficient, providing a seamless user experience.
 
-### AlbumTalk web application
+In this specific version of the API, only albums by David Bowie are handled.
 
-## Live Page
+The deployed api can be found [here](https://albumtalk-api-9fb1bb849439.herokuapp.com/).
 
-[]()
+## Table of contents
+<!-- TOC -->
 
-# Planning and Agile
+- [AlbumTalk API](#albumtalk-api)
+    - [Table of contents](#table-of-contents)
+    - [Agile:](#agile)
+    - [User Stories](#user-stories)
+    - [Entity Relationship Diagram](#entity-relationship-diagram)
+        - [Summary of Entity Relationships](#summary-of-entity-relationships)
+    - [Endpoints](#endpoints)
+    - [The use of data from AudioDB](#the-use-of-data-from-audiodb)
+        - [AudioDB API](#audiodb-api)
+    - [Testing](#testing)
+    - [Validation](#validation)
+    - [Future Improvements](#future-improvements)
+    - [Installed Python Packages](#installed-python-packages)
+    - [Development and Deployment](#development-and-deployment)
+        - [Forking and setting up the project in VS Code](#forking-and-setting-up-the-project-in-vs-code)
+        - [Set up the Heroku Application](#set-up-the-heroku-application)
+    - [Languages and Technologies](#languages-and-technologies)
+    - [Other tools](#other-tools)
+    - [Credits](#credits)
+    - [Media](#media)
+    - [Data](#data)
+    - [Acknowledgements](#acknowledgements)
 
-## Design:
-
-Described in the readme for the web application
-
-## Wireframes:
-
-Described in the readme for the web application
+<!-- /TOC -->
 
 ## Agile:
 
-The API and Frontend of this project was planned using Agile methodology and MoSCoW prioritization on github projects.<br>
+The API and Frontend of this project was planned and developed using Agile methodology and MoSCoW prioritization on github projects. This is described in more detail in the readme for the AlbumTalk web application.<br>
 
-The user stories project can be found [here](https://github.com/users/andersganander/projects/6)
-
-## Labels used:
-
-`must-have`
-`should-have`
-`couldhave`
-`wont-have`
-`future improvement`
-`user story`<br>
-
-The project...
-
-![Project planning]()
+The project can be found [here](https://github.com/users/andersganander/projects/6)
 
 ## User Stories
 
@@ -150,7 +148,6 @@ After defining the user stories for AlbumTalk, the next step was to design the E
 Below are descriptions of the endpoints specific to AlbumTalk. Endpoints for registration and login, which are part of dj-rest-auth, are not described.
 
 
-
 | **Endpoint**                    | **Method** | **Description**                                                             |   |
 | :-------------------------------- | :----------- | ----------------------------------------------------------------------------- | :-- |
 |                                 |            |                                                                             |   |
@@ -254,9 +251,7 @@ which returned a list of albums in json format like the one below:
 The full documentation of the AudioDB API can be found here:
 [AudioDB API](https://www.theaudiodb.com/free_music_api)
 
-
-
-# Testing
+## Testing
 
 The testing process of the AlbumTalk API involved a combination of manual and indirect testing methods:
 
@@ -264,12 +259,11 @@ The testing process of the AlbumTalk API involved a combination of manual and in
 During the development of the API and the AlbumTalk web application, the API endpoints were manually tested. This process included making requests to the endpoints, verifying responses, checking error handling, and ensuring correct data retrieval and manipulation. These tests aimed to ensure that the API was functioning as intended and meeting the requirements.
 
 **Indirect Testing via Web Application:**
-The API was also tested indirectly while validating user stories for the AlbumTalk web application. These user stories, documented as part of the development process, covered various application functionalities that depend on the API. By testing the web application against these user stories, the API's integration and performance were evaluated in a real-world context, ensuring it correctly supports the application's features. 
+The API was also tested indirectly while validating user stories for the AlbumTalk web application. These user stories, documented as part of the development process, covered various application functionalities that depend on the API. By testing the web application against these user stories, the API's integration and performance were evaluated in a real-world context, ensuring it correctly supports the application's features.
 
 This dual approach ensured that the API was robust, met user requirements, and integrated seamlessly with the web application.
 
 The result of the testing of the user stories can be found [here](/Testing.md)
-
 
 ## Validation
 
@@ -288,69 +282,110 @@ This feature improves the completeness of AlbumTalk’s offering without requiri
 
 To achieve this, some changes need to be done to the database models.
 
-
 ## Installed Python Packages
 
 The following packages were installed when developing this project:
+- asgiref
+- cloudinary
+- dj-database-url
+- dj-rest-auth
+- Django
+- django-allauth
+- django-cloudinary-storage
+- django-cors-headers
+- django-filter
+- djangorestframework
+- djangorestframework-simplejwt
+- gunicorn
+- oauthlib
+- pillow
+- psycopg2
+- PyJWT
+- python3-openid
+- requests-oauthlib
+- sqlparse
 
-# Development and Deployment
+## Development and Deployment
 
-## Heroku
-
-The website is being hosted and deployed on Heroku:
-
-- Navigate to: "Create new app" add a unique name "djangorestframework-api" and select your region. Click "Create App"
-- Head over to "Settings" tab and apply the respective config VARs
-- Move to "Deploy" section and select "Github" method"
-- From here search for the repository name "connect", from the GitHub account.
-- Hit "Connect" and "Enable Automatic Deploys" to keep the the repository in parallel to Heroku.
-- Manually "Deploy Main Branch".
-- Upon successful deployment, retrieve the link for the mock terminal.
-- The live app can be found [here](https://albumtalk-api-9fb1bb849439.herokuapp.com/).
-
-## Forking and setting up the project in VS Code
+### Forking and setting up the project in VS Code
 
 - Fork the repository
+
   - Login to your GitHub account
   - Navigate to the repository (https://github.com/andersganander/AlbumTalk_API)
   - Click the Fork button at the top-right corner of the page.
   - This creates a copy of the repository under your GitHub account.
-
 - Clone the forked repository
+
   - Clone the forked repository to your local machine:
     git clone https://github.com/your-username/repository-name.git
-
 - Open the Project in VS Code
+
   - Open VS Code
   - Select File > Open Folder and navigate to the folder where you cloned the repository.
-
 - Set Up a Virtual Environment
+
   - Open the integrated terminal in VS Code
   - Create a virtual environment:
     <code>python -m venv venv</code>
   - Activate the virtual environment
     win: venv\Scripts\activate
     mac: source venv/bin/activate
-
 - Install dependicies
+
   - Install the required dependencies using pip:
     <code>pip install -r requirements.txt</code>
-
 - Set up the databaase
+
   - Apply database migrations
     <code>python manage.py migrate</code>
-
 - Set up the environment variables
+
   - Create a env.py file in the project root and add the variables:
     - SECRET_KEY
     - DATABASE_URL
     - CLOUDINARY_URL
     - DEV
-
 - Start the server
+
   - Start the development server
     <code>python manage.py start</code>
 
+
+
+### Set up the Heroku Application
+The api is being hosted and deployed on Heroku:
+
+- Log in to the Heroku Dahboard
+- Create a New App
+   - Click New > Create New App
+   - Choose a name for your app (e.g., your-app-name) and select a region.
+- Set up GitHub integration
+   - In your app's dashboard, go to the Deploy tab
+   - Under Deployment method, select GitHub
+   - Authenticate and search for your repository.
+   - Click Connect to link the repository.
+- Configure environment variables
+   - Go to the Settings tab and click Reveal Config Vars
+   - Add the following variables:
+      - ALLOWED_HOSTS: the api's url
+      - CLIENT_ORIGIN: the url of the front end web application
+      - CLIENT_ORIGIN_DEV: the url of the front end web application when testing from your local environment
+      - CLOUDINARY_URL: the cloudinary url
+      - DISABLE_COLLECTSTATIC: 1
+      - SECRET_KEY: The secret key
+- Deploy the application
+   - Automatic deployments
+      - In the Deploy tab, enable Automatic Deploys if you want Heroku to deploy every time you push changes to the main branch.
+   - Manual deployment
+      - If you prefer, deploy manually by clicking Deploy Branch under Manual Deploy.
+- Test the deployment
+   - Open the application
+      - Click the button that is shown after the deployment or click the button "Open app" in the upper right corner.
+   - Monitor logs
+      - In the More dropdown, select View Logs to troubleshoot any issues.
+
+- The live app can be found [here](https://albumtalk-api-9fb1bb849439.herokuapp.com/).
 
 ## Languages and Technologies
 
@@ -364,21 +399,23 @@ The website is being hosted and deployed on Heroku:
 - [Cloudinary](https://cloudinary.com/) - Cloud based service for storing media. Used for storing profile images.
 - [CI Python Linter](https://pep8ci.herokuapp.com/) - Python linting tool.
 - Flake8 - VSCode extension that checks Python code for style and syntax errors.
+- [UptimeRobot](https://uptimerobot.com/) - Uptime monitoring service. Due to database disruptions, monitoring was set up using UptimeRobot to rule out other issues. Monitoring was also implemented for the API developed in the walkthrough project.
 
-
-# Credits
+## Credits
 
 The following sources and references were resorted for the creation of this website:
 
-- The lessons and tutorials provided by Code Institute, on the final module entitled "Django REST Framework" for the 'Advanced Front-End' specialization
+- The lessons and tutorials offered by Code Institute in the final module, titled "Django REST Framework," as part of the 'Advanced Front-End' specialization.
 
 ## Media
+
 - [AudioDB](https://www.theaudiodb.com/) - Images on the signin/signup page and cover image
 
 ## Data
+
 - [AudioDB](https://www.theaudiodb.com/) - All album data is retrieved from the AudioDB database.
 
-# Acknowledgements
+## Acknowledgements
 
 - My mentor Antonio for tips and suggestions.
 - The swedish community on Slack.
