@@ -25,7 +25,12 @@ class ReviewList(generics.ListCreateAPIView):
         DjangoFilterBackend
     ]
 
-    filterset_fields = ['album', 'owner__profile']
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'album', 
+        'owner__profile'
+    ]
+
     search_fields = [
         'album__title', 'owner__username'
     ]
