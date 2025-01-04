@@ -12,27 +12,27 @@ The deployed api can be found [here](https://albumtalk-api-9fb1bb849439.herokuap
 <!-- TOC -->
 
 - [AlbumTalk API](#albumtalk-api)
-    - [Table of contents](#table-of-contents)
-    - [Agile:](#agile)
-    - [User Stories](#user-stories)
-    - [Entity Relationship Diagram](#entity-relationship-diagram)
-        - [Summary of Entity Relationships](#summary-of-entity-relationships)
-    - [Endpoints](#endpoints)
-    - [The use of data from AudioDB](#the-use-of-data-from-audiodb)
-        - [AudioDB API](#audiodb-api)
-    - [Testing](#testing)
-    - [Validation](#validation)
-    - [Future Improvements](#future-improvements)
-    - [Installed Python Packages](#installed-python-packages)
-    - [Development and Deployment](#development-and-deployment)
-        - [Forking and setting up the project in VS Code](#forking-and-setting-up-the-project-in-vs-code)
-        - [Set up the Heroku Application](#set-up-the-heroku-application)
-    - [Languages and Technologies](#languages-and-technologies)
-    - [Other tools](#other-tools)
-    - [Credits](#credits)
-    - [Media](#media)
-    - [Data](#data)
-    - [Acknowledgements](#acknowledgements)
+  - [Table of contents](#table-of-contents)
+  - [Agile:](#agile)
+  - [User Stories](#user-stories)
+  - [Entity Relationship Diagram](#entity-relationship-diagram)
+    - [Summary of Entity Relationships](#summary-of-entity-relationships)
+  - [Endpoints](#endpoints)
+  - [The use of data from AudioDB](#the-use-of-data-from-audiodb)
+    - [AudioDB API](#audiodb-api)
+  - [Testing](#testing)
+  - [Validation](#validation)
+  - [Future Improvements](#future-improvements)
+  - [Installed Python Packages](#installed-python-packages)
+  - [Development and Deployment](#development-and-deployment)
+    - [Forking and setting up the project in VS Code](#forking-and-setting-up-the-project-in-vs-code)
+    - [Set up the Heroku Application](#set-up-the-heroku-application)
+  - [Languages and Technologies](#languages-and-technologies)
+  - [Other tools](#other-tools)
+  - [Credits](#credits)
+  - [Media](#media)
+  - [Data](#data)
+  - [Acknowledgements](#acknowledgements)
 
 <!-- /TOC -->
 
@@ -263,7 +263,7 @@ The API was also tested indirectly while validating user stories for the AlbumTa
 
 This dual approach ensured that the API was robust, met user requirements, and integrated seamlessly with the web application.
 
-The result of the testing of the user stories can be found [here](/Testing.md)
+The result of the testing of the user stories can be found [here](https://github.com/andersganander/albumtalk/blob/main/TESTING.md)
 
 ## Validation
 
@@ -372,6 +372,7 @@ The api is being hosted and deployed on Heroku:
       - CLIENT_ORIGIN: the url of the front end web application
       - CLIENT_ORIGIN_DEV: the url of the front end web application when testing from your local environment
       - CLOUDINARY_URL: the cloudinary url
+      - DATABSE_URL: the url to the database
       - DISABLE_COLLECTSTATIC: 1
       - SECRET_KEY: The secret key
 - Deploy the application
