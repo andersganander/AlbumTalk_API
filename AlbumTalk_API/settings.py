@@ -37,7 +37,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ws.codeinstitute-ide.net/']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.ws.codeinstitute-ide.net/',
+    'https://*.herokuapp.com'
+]
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOSTS'),
