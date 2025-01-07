@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEV') == 'True'
+DEBUG = 'DEV' in os.environ
 
 
 CSRF_TRUSTED_ORIGINS = ['https://*.ws.codeinstitute-ide.net/']
