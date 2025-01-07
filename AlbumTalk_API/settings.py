@@ -34,8 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
-#DEBUG = False
+DEBUG = os.environ.get('DEV') == 'True'
 
 
 CSRF_TRUSTED_ORIGINS = ['https://*.ws.codeinstitute-ide.net/']
@@ -96,7 +95,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer'
     ]
 
-REST_AUTH = {  
+REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_COOKIE': 'albumtalk-auth-token',
