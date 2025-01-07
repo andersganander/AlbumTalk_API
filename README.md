@@ -112,7 +112,7 @@ After defining the user stories for AlbumTalk, the next step was to design the E
    - Writes multiple comments.
    - Linked to one profile.
    - Linked to other user objects for following.
-   - Can have multiple favorites (TODO: UPDATE ERD)
+   - Can have multiple favorites
 2. **Album**: Entity representing music albums.
 
    - Has multiple reviews.
